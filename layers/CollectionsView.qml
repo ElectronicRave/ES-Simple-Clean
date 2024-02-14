@@ -67,10 +67,13 @@ import QtQuick 2.12
 
 	Item {
 		id: logoBar
-		anchors.left: parent.left
-		anchors.right: parent.right
-		anchors.verticalCenter: parent.verticalCenter
 		height: aspectRatio === 43 ? vpx(90*screenRatio) : vpx(90*screenRatio)
+
+	anchors {
+		top: parent.top; topMargin: aspectRatio === 43 ? vpx(132*screenRatio) : vpx(132*screenRatio)
+		left: parent.left
+		right: parent.right
+	}
 
 	//Background
 
