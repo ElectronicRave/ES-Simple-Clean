@@ -30,8 +30,8 @@ For this theme you need the following media types from [skraper](http://skraper.
 ## Home Screen
 
 - A  - Launch content
-- L1 - Previnious system
-- L2 - Next system
+- L2 - Previnious system
+- R2 - Next system
 - TOUCH - Access to all features
 
 ## Content Screen
