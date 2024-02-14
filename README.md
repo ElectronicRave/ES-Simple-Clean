@@ -29,11 +29,11 @@ For this theme you need the following media types from [skraper](http://skraper.
 
 ## Home Screen
 
-## Content Screen
-
 - A  - Launch the Game
 - B  - Goes back to the Home Page
 - TOUCH - Access to all features
+
+## Content Screen
 
 In this list you can see all content in the System, in this screen you can do several things by pressing different buttons:
 
