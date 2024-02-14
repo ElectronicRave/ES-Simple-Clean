@@ -29,15 +29,16 @@ For this theme you need the following media types from [skraper](http://skraper.
 
 ## Home Screen
 
-- A  - Launch the Game
-- B  - Goes back to the Home Page
+- A  - Launch content
+- L1 - Previnious system
+- L2 - Next system
 - TOUCH - Access to all features
 
 ## Content Screen
 
 In this list you can see all content in the System, in this screen you can do several things by pressing different buttons:
 
-- A  - Launch the Game
+- A  - Launch content
 - B  - Goes back to the Home Page
 - L1 - Previnious page
 - R1 - Next page
