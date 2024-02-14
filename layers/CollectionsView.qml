@@ -87,11 +87,12 @@ import QtQuick 2.12
 
 	Carousel {
 		id: logoAxis
-
-		anchors.fill: parent
 		itemWidth:  aspectRatio === 43 ? vpx(255*screenRatio) : vpx(255*screenRatio)
-
 		model: api.collections
+
+		anchors {
+			fill: parent
+		}
 
 	delegate:
 
@@ -129,7 +130,7 @@ import QtQuick 2.12
 }
 
 	MouseArea {
-		anchors.fill: parent
+		anchors.fill: logoAxis
 		onClicked: {
 			onItemSelected: detailsView.focus = true
 	}
