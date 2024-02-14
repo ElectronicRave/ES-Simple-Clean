@@ -75,7 +75,7 @@ import QtQuick 2.12
 		id: header
 		property int paddingH: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
 		property int paddingV: aspectRatio === 43 ? vpx(12*screenRatio) : vpx(12*screenRatio)
-		height: aspectRatio === 43 ? vpx(59*screenRatio) : vpx(59*screenRatio)
+		height: aspectRatio === 43 ? vpx(65*screenRatio) : vpx(65*screenRatio)
 		color: "#c5c6c7"
 
 	anchors {
@@ -121,8 +121,8 @@ import QtQuick 2.12
 
 	Rectangle {
 		id: content
-		property int paddingH: aspectRatio === 43 ? vpx(58*screenRatio) : vpx(58*screenRatio)
-		property int paddingV: aspectRatio === 43 ? vpx(40*screenRatio) : vpx(40*screenRatio)
+		property int paddingH: aspectRatio === 43 ? vpx(52*screenRatio) : vpx(52*screenRatio)
+		property int paddingV: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
 		color: "#97999a"
 
 	anchors {
@@ -260,7 +260,7 @@ import QtQuick 2.12
 
 	Rectangle {
 		id: footer
-		height: aspectRatio === 43 ? vpx(13*screenRatio) * 1.5 : vpx(13*screenRatio) * 1.5
+		height: aspectRatio === 43 ? vpx(22*screenRatio) * 1.5 : vpx(22*screenRatio) * 1.5
 		color: header.color
 
 	anchors {
