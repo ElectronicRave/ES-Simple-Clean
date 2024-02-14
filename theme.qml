@@ -3,6 +3,7 @@ import "layers" as Layers
 
 
 	FocusScope {
+		id: root
 
 	// When the theme loads, try to restore the last selected game and collection.
 
@@ -10,6 +11,43 @@ import "layers" as Layers
 		collectionsView.currentCollectionIndex = api.memory.get('collectionIndex') || 0;
 		detailsView.currentGameIndex = api.memory.get('gameIndex') || 0;
 }
+
+	//Calculates screen ratio
+
+	property var screenRatio: root.height < 481 ? 1.98 : 1.88;
+
+	//calculates screen proportion
+
+	property var screenProportion: root.width / root.height;
+
+	//calculates screen aspect
+
+	property var aspectRatio : calculateAspectRatio(screenProportion)
+
+	function calculateAspectRatio(screenProportion){
+		if (screenProportion < 1.34){
+		return 43;
+	}
+		return 169;
+}
+
+	//Percentage calculator
+
+	function vw(pixel){
+		switch (aspectRatio) {
+		case 43:
+		return vpx(pixel*12.8)
+		break;
+		case 169:
+		return vpx(pixel*12.8)
+		break;
+		default:
+		return vpx(pixel*12.8)
+		break;
+	}
+
+}
+
 
 	// Loading the fonts here makes them usable in the rest of the theme
 
