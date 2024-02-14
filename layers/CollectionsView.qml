@@ -70,7 +70,7 @@ import QtQuick 2.12
 		anchors.left: parent.left
 		anchors.right: parent.right
 		anchors.verticalCenter: parent.verticalCenter
-		height: vpx(170)
+		height: aspectRatio === 43 ? vpx(90*screenRatio) : vpx(90*screenRatio)
 
 	//Background
 
@@ -86,7 +86,7 @@ import QtQuick 2.12
 		id: logoAxis
 
 		anchors.fill: parent
-		itemWidth: vpx(480)
+		itemWidth:  aspectRatio === 43 ? vpx(255*screenRatio) : vpx(255*screenRatio)
 
 		model: api.collections
 
@@ -162,7 +162,7 @@ import QtQuick 2.12
 		id: label
 		text: "%1 GAMES AVAILABLE".arg(currentCollection.games.count)
 		color: "#333"
-		font.pixelSize: vpx(25)
+		font.pixelSize: aspectRatio === 43 ? vpx(14*screenRatio) : vpx(14*screenRatio)
 		font.family: "Open Sans"
 
 		anchors {

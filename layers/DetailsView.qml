@@ -73,9 +73,9 @@ import QtQuick 2.12
 
 	Rectangle {
 		id: header
-		property int paddingH: vpx(30) // H as horizontal
-		property int paddingV: vpx(22) // V as vertical
-		height: vpx(115)
+		property int paddingH: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
+		property int paddingV: aspectRatio === 43 ? vpx(12*screenRatio) : vpx(12*screenRatio)
+		height: aspectRatio === 43 ? vpx(59*screenRatio) : vpx(59*screenRatio)
 		color: "#c5c6c7"
 
 	anchors {
@@ -106,7 +106,7 @@ import QtQuick 2.12
 		color: "#7b7d7f"
 		font.capitalization: Font.AllUppercase
 		font.family: "Open Sans"
-		font.pixelSize: vpx(32)
+		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
 		font.weight: Font.Light // this is how you use the light variant
 		horizontalAlignment: Text.AlignRight
 
@@ -121,8 +121,8 @@ import QtQuick 2.12
 
 	Rectangle {
 		id: content
-		property int paddingH: vpx(110)
-		property int paddingV: vpx(75)
+		property int paddingH: aspectRatio === 43 ? vpx(58*screenRatio) : vpx(58*screenRatio)
+		property int paddingV: aspectRatio === 43 ? vpx(40*screenRatio) : vpx(40*screenRatio)
 		color: "#97999a"
 
 	anchors {
@@ -134,8 +134,8 @@ import QtQuick 2.12
 
 	Item {
 		id: boxart
-		height: vpx(418)
-		width: Math.max(vpx(460), Math.min(height * boxartImage.aspectRatio, vpx(520)))
+		height: aspectRatio === 43 ? vpx(220*screenRatio) : vpx(220*screenRatio)
+		width: Math.max(aspectRatio === 43 ? vpx(230*screenRatio) : vpx(230*screenRatio), Math.min(height * boxartImage.aspectRatio, aspectRatio === 43 ? vpx(260*screenRatio) : vpx(260*screenRatio)))
 		z: 1
 
 	anchors {
@@ -147,7 +147,7 @@ import QtQuick 2.12
 		id: boxartImage
 		property double aspectRatio: (implicitWidth / implicitHeight) || 0
 		source: currentGame.assets.boxFront || currentGame.assets.logo
-		sourceSize { width: 256; height: 256 } // optimization (max size)
+		sourceSize { width: 256; height: 256 }
 		fillMode: Image.PreserveAspectFit
 		asynchronous: true
 		horizontalAlignment: Image.AlignHCenter
@@ -185,12 +185,12 @@ import QtQuick 2.12
 	Text {
 		id: gameTitle
 		width: parent.width
-		leftPadding: vpx(10)
+		leftPadding: aspectRatio === 43 ? vpx(6*screenRatio) : vpx(6*screenRatio)
 		rightPadding: leftPadding
 		lineHeight: 1.2
 		text: modelData.title
 		color: selected ? clrLight : clrDark
-		font.pixelSize: vpx(24)
+		font.pixelSize: aspectRatio === 43 ? vpx(13*screenRatio) : vpx(13*screenRatio)
 		font.capitalization: Font.AllUppercase
 		font.family: "Open Sans"
 		verticalAlignment: Text.AlignVCenter
@@ -210,12 +210,12 @@ import QtQuick 2.12
 	Text {
 		id: gameTitle__animation
 		width: parent.width
-		leftPadding: vpx(10)
+		leftPadding: aspectRatio === 43 ? vpx(6*screenRatio) : vpx(6*screenRatio)
 		rightPadding: leftPadding
 		lineHeight: 1.2
 		text: gameTitle__item.display
-		color: selected ?clrLight : clrDark
-		font.pixelSize: vpx(24)
+		color: selected ? clrLight : clrDark
+		font.pixelSize: aspectRatio === 43 ? vpx(13*screenRatio) : vpx(13*screenRatio)
 		font.capitalization: Font.AllUppercase
 		font.family: "Open Sans"
 		verticalAlignment: Text.AlignVCenter
@@ -260,7 +260,7 @@ import QtQuick 2.12
 
 	Rectangle {
 		id: footer
-		height: vpx(25) * 1.5
+		height: aspectRatio === 43 ? vpx(13*screenRatio) * 1.5 : vpx(13*screenRatio) * 1.5
 		color: header.color
 
 	anchors {

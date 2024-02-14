@@ -4,7 +4,7 @@ import QtQuick 2.12
 
 	PathView {
 		id: root
-		property int itemWidth // set this on the calling site
+		property int itemWidth
 		property int pathWidth: pathItemCount * itemWidth
 		snapMode: PathView.SnapOneItem
 

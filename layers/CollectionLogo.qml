@@ -3,23 +3,23 @@ import QtQuick 2.12
 	// The collection logo on the collection carousel.
 
 	Item {
-		property string longName: "" // set on the PathView side
-		property string shortName: "" // set on the PathView side
+		property string longName: "" 
+		property string shortName: "" 
 		property bool selected: PathView.isCurrentItem
 
-		width: vpx(480)
-		height: vpx(120)
-		visible: PathView.onPath // optimization: do not draw if not visible
+		width: aspectRatio === 43 ? vpx(255*screenRatio) : vpx(255*screenRatio)
+		height: aspectRatio === 43 ? vpx(75*screenRatio) : vpx(75*screenRatio)
+		visible: PathView.onPath 
 		opacity: selected ? 1.0 : 0.5
 		Behavior on opacity { NumberAnimation { duration: 150 } }
 
 
 	Image {
-		id: logo
+		id: image
 		fillMode: Image.PreserveAspectFit
 		source: shortName ? "../assets/images/logos/%1.svg".arg(shortName) : ""
 		asynchronous: true
-		sourceSize { width: 256; height: 256 } // optimization: render SVGs in at most 256x256
+		sourceSize { width: 256; height: 256 } 
 		scale: selected ? 1.0 : 0.66
 		Behavior on scale { NumberAnimation { duration: 200 } }
 
@@ -30,12 +30,12 @@ import QtQuick 2.12
 }
 
 	Text {
-		id: logo__title
+		id: label
 		color: "#000"
 		font.family: "Open Sans"
-		font.pixelSize: vpx(50)
+		font.pixelSize: aspectRatio === 43 ? vpx(26*screenRatio) : vpx(26*screenRatio)
 		text: shortName || longName
-		visible: logo.status != Image.Ready
+		visible: image.status != Image.Ready
 		scale: selected ? 1.5 : 1.0
 		Behavior on scale { NumberAnimation { duration: 150 } }
 
