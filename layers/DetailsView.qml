@@ -106,8 +106,8 @@ import QtQuick 2.12
 		color: "#7b7d7f"
 		font.capitalization: Font.AllUppercase
 		font.family: "Open Sans"
-		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
-		font.weight: Font.Light // this is how you use the light variant
+		font.pixelSize: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
+		font.weight: Font.Light
 		horizontalAlignment: Text.AlignRight
 
 	anchors {
