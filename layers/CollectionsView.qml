@@ -202,6 +202,7 @@ import QtGraphicalEffects 1.12
 }
 
 	MouseArea {
+		id: logoAxis_mouse
 		anchors.fill: logoAxis
 		onClicked: {
 			onItemSelected: detailsView.focus = true

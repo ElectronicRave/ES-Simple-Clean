@@ -203,6 +203,7 @@ import QtGraphicalEffects 1.12
 }
 
 	MouseArea {
+		id: gameTitle_mouse
 		anchors.fill: gameTitle
 		onClicked: {
 			if (selected) {
@@ -397,7 +398,8 @@ import QtGraphicalEffects 1.12
 }
 
 	MouseArea {
-		anchors.fill: footer__helper_back && footer__helper_back_label
+		id: footer__helper_back_label_mouse
+		anchors.fill: footer__helper_back_label
 		onClicked: {
 		collectionsView.focus = true
 		return;
