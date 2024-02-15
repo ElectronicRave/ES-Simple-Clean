@@ -290,15 +290,6 @@ import QtGraphicalEffects 1.12
 
 }
 
-	MouseArea {
-		anchors.fill: footer__helper_back && footer__helper_back_label
-		onClicked: {
-		collectionsView.focus = true
-		return;
-	}
-
-}
-
 	Image {
 		id: footer__helper_launch
 		width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
@@ -397,6 +388,15 @@ import QtGraphicalEffects 1.12
 	anchors {
 		left: footer__helper_choose.right; leftMargin: aspectRatio === 43 ? vpx(6*screenRatio) : vpx(6*screenRatio)
 		verticalCenter: parent.verticalCenter
+	}
+
+}
+
+	MouseArea {
+		anchors.fill: footer__helper_back && footer__helper_back_label
+		onClicked: {
+		collectionsView.focus = true
+		return;
 	}
 
 }
