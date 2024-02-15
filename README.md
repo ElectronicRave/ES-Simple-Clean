@@ -29,17 +29,17 @@ For this theme you need the following media types from [skraper](http://skraper.
 
 ## Home Screen
 
-- A  - Launch content
-- <- - Previnious system
-- -> - Next system
+- A     - Launch content
+- LEFT  - Previnious system
+- RIGHT - Next system
 - TOUCH - Access to all features
 
 ## Content Screen
 
 In this list you can see all content in the System, in this screen you can do several things by pressing different buttons:
 
-- A  - Launch content
-- B  - Goes back to the Home Page
-- <- - Previous system
-- -> - Next system
+- A     - Launch content
+- B     - Goes back to the Home Page
+- LEFT  - Previous system
+- RIGHT - Next system
 - TOUCH - Access to all features
