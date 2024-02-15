@@ -288,14 +288,14 @@ import QtGraphicalEffects 1.12
 		verticalCenter: parent.verticalCenter
 	}
 
+}
+
 	MouseArea {
-		anchors.fill: footer__helper_back_label
+		anchors.fill: footer__helper_back && footer__helper_back_label
 		onClicked: {
 		collectionsView.focus = true
 		return;
 	}
-
-}
 
 }
 
