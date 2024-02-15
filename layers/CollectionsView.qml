@@ -89,6 +89,7 @@ import QtGraphicalEffects 1.12
 		layer.effect: ColorOverlay { color: "#2c2c2c" }
 		antialiasing: true
 		smooth: true
+		opacity: 0.8
 
 	anchors {
 		left: parent.left; leftMargin: aspectRatio === 43 ? vpx(5*screenRatio) : vpx(5*screenRatio)
@@ -123,6 +124,7 @@ import QtGraphicalEffects 1.12
 		layer.effect: ColorOverlay { color: "#2c2c2c" }
 		antialiasing: true
 		smooth: true
+		opacity: 0.8
 
 	anchors {
 		left: footer__helper_select_label.right; leftMargin: aspectRatio === 43 ? vpx(10*screenRatio) : vpx(10*screenRatio)
