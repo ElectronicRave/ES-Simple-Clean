@@ -52,7 +52,7 @@ import QtGraphicalEffects 1.12
 
 	Image {
 		id: realBg
-		fillMode: Image.PreserveAspectCrop 
+		fillMode: Image.PreserveAspectFit 
 		source: modelData.shortName ? "../assets/images/backgrounds/%1_art_blur.png".arg(modelData.shortName) : ""
 		asynchronous: true
 
@@ -83,7 +83,7 @@ import QtGraphicalEffects 1.12
 		id: footer__helper_select
 		width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
 		height: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
-		fillMode: Image.PreserveAspectCrop
+		fillMode: Image.PreserveAspectFit
 		source: "../assets/icons/helper_launch.svg"
 		layer.enabled: true
 		layer.effect: ColorOverlay { color: "#2c2c2c" }
@@ -117,7 +117,7 @@ import QtGraphicalEffects 1.12
 		id: footer__helper_choose
 		width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
 		height: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
-		fillMode: Image.PreserveAspectCrop
+		fillMode: Image.PreserveAspectFit
 		source: "../assets/icons/helper_system.svg"
 		layer.enabled: true
 		layer.effect: ColorOverlay { color: "#2c2c2c" }

@@ -260,7 +260,7 @@ import QtGraphicalEffects 1.12
 		id: footer__helper_launch
 		width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
 		height: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
-		fillMode: Image.PreserveAspectCrop
+		fillMode: Image.PreserveAspectFit
 		source: "../assets/icons/helper_launch.svg"
 		layer.enabled: true
 		layer.effect: ColorOverlay { color: "#4f4f4f" }
@@ -294,7 +294,7 @@ import QtGraphicalEffects 1.12
 		id: footer__helper_back
 		width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
 		height: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
-		fillMode: Image.PreserveAspectCrop
+		fillMode: Image.PreserveAspectFit
 		source: "../assets/icons/helper_back.svg"
 		layer.enabled: true
 		layer.effect: ColorOverlay { color: "#4f4f4f" }
@@ -322,13 +322,22 @@ import QtGraphicalEffects 1.12
 		verticalCenter: parent.verticalCenter
 	}
 
+	MouseArea {
+		anchors.fill: footer__helper_back && footer__helper_back_label
+		onClicked: {
+		collectionsView.focus = true
+		return;
+	}
+
+}
+
 }
 
 	Image {
 		id: footer__helper_system
 		width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
 		height: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
-		fillMode: Image.PreserveAspectCrop
+		fillMode: Image.PreserveAspectFit
 		source: "../assets/icons/helper_system.svg"
 		layer.enabled: true
 		layer.effect: ColorOverlay { color: "#4f4f4f" }
@@ -362,7 +371,7 @@ import QtGraphicalEffects 1.12
 		id: footer__helper_choose
 		width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
 		height: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
-		fillMode: Image.PreserveAspectCrop
+		fillMode: Image.PreserveAspectFit
 		source: "../assets/icons/helper_choose.svg"
 		layer.enabled: true
 		layer.effect: ColorOverlay { color: "#4f4f4f" }
