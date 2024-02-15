@@ -1,4 +1,5 @@
 import QtQuick 2.12
+import QtGraphicalEffects 1.12
 
 
 	//Properties to display the list and images in the current collection
@@ -30,40 +31,6 @@ import QtQuick 2.12
 		if (api.keys.isCancel(event)) {
 		event.accepted = true;
 		collectionsView.focus = true
-		return;
-	}
-
-		//Next page
-
-		if (api.keys.isNextPage(event)) {
-		event.accepted = true
-		gameView.currentIndex = Math.min(gameView.currentIndex + 5, currentCollection.games.count - 1)
-		return;
-
-}
-
-		//Prev page
-
-		if (api.keys.isPrevPage(event)) {
-		event.accepted = true
-		gameView.currentIndex = Math.max(gameView.currentIndex - 5, 0)
-		return;
-
-}
-
-		//Next collection
-
-		if (api.keys.isPageDown(event)) {
-		event.accepted = true;
-		collectionsView.currentCollectionIndex = collectionsView.currentCollectionIndex + 1
-		return;
-	}
-
-		//Prev collection
-
-		if (api.keys.isPageUp(event)) {
-		event.accepted = true;
-		collectionsView.currentCollectionIndex = collectionsView.currentCollectionIndex - 1
 		return;
 	}
 
@@ -172,6 +139,9 @@ import QtQuick 2.12
 		bottom: parent.bottom; bottomMargin: content.paddingV
 	}
 
+		Keys.onLeftPressed: { collectionsView.currentCollectionIndex = collectionsView.currentCollectionIndex + 1 } 
+		Keys.onRightPressed: { collectionsView.currentCollectionIndex = collectionsView.currentCollectionIndex - 1 }
+
 	delegate:
 
 	Rectangle {
@@ -258,6 +228,8 @@ import QtQuick 2.12
 
 }
 
+	//Footer bar
+
 	Rectangle {
 		id: footer
 		height: aspectRatio === 43 ? vpx(22*screenRatio) * 1.5 : vpx(22*screenRatio) * 1.5
@@ -268,6 +240,157 @@ import QtQuick 2.12
 		right: parent.right
 		bottom: parent.bottom
 	}
+
+}
+
+	//Footer bar helper
+
+	Rectangle {
+		id: footer__helper
+		height: aspectRatio === 43 ? vpx(22*screenRatio) * 1.5 : vpx(22*screenRatio) * 1.5
+		color: "transparent"
+
+	anchors {
+		left: parent.left
+		right: parent.right
+		bottom: parent.bottom
+	}
+
+	Image {
+		id: footer__helper_launch
+		width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
+		height: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
+		fillMode: Image.PreserveAspectCrop
+		source: "../assets/icons/helper_launch.svg"
+		layer.enabled: true
+		layer.effect: ColorOverlay { color: "#4f4f4f" }
+		antialiasing: true
+		smooth: true
+
+	anchors {
+		left: parent.left; leftMargin: aspectRatio === 43 ? vpx(5*screenRatio) : vpx(5*screenRatio)
+		verticalCenter: parent.verticalCenter
+	}
+
+}
+
+	Text {
+		id: footer__helper_launch_label
+		text: "launch"
+		color: "#7b7d7f"
+		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
+		font.capitalization: Font.AllUppercase
+		font.family: "Open Sans"
+		verticalAlignment: Text.AlignVCenter
+
+	anchors {
+		left: footer__helper_launch.right; leftMargin: aspectRatio === 43 ? vpx(0*screenRatio) : vpx(0*screenRatio)
+		verticalCenter: parent.verticalCenter
+	}
+
+}
+
+	Image {
+		id: footer__helper_back
+		width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
+		height: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
+		fillMode: Image.PreserveAspectCrop
+		source: "../assets/icons/helper_back.svg"
+		layer.enabled: true
+		layer.effect: ColorOverlay { color: "#4f4f4f" }
+		antialiasing: true
+		smooth: true
+
+	anchors {
+		left: footer__helper_launch_label.right; leftMargin: aspectRatio === 43 ? vpx(4*screenRatio) : vpx(4*screenRatio)
+		verticalCenter: parent.verticalCenter
+	}
+
+}
+
+	Text {
+		id: footer__helper_back_label
+		text: "back"
+		color: "#7b7d7f"
+		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
+		font.capitalization: Font.AllUppercase
+		font.family: "Open Sans"
+		verticalAlignment: Text.AlignVCenter
+
+	anchors {
+		left: footer__helper_back.right; leftMargin: aspectRatio === 43 ? vpx(0*screenRatio) : vpx(0*screenRatio)
+		verticalCenter: parent.verticalCenter
+	}
+
+}
+
+	Image {
+		id: footer__helper_system
+		width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
+		height: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
+		fillMode: Image.PreserveAspectCrop
+		source: "../assets/icons/helper_system.svg"
+		layer.enabled: true
+		layer.effect: ColorOverlay { color: "#4f4f4f" }
+		antialiasing: true
+		smooth: true
+
+	anchors {
+		left: footer__helper_back_label.right; leftMargin: aspectRatio === 43 ? vpx(10*screenRatio) : vpx(10*screenRatio)
+		verticalCenter: parent.verticalCenter
+	}
+
+}
+
+	Text {
+		id: footer__helper_system_label
+		text: "system"
+		color: "#7b7d7f"
+		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
+		font.capitalization: Font.AllUppercase
+		font.family: "Open Sans"
+		verticalAlignment: Text.AlignVCenter
+
+	anchors {
+		left: footer__helper_system.right; leftMargin: aspectRatio === 43 ? vpx(6*screenRatio) : vpx(6*screenRatio)
+		verticalCenter: parent.verticalCenter
+	}
+
+}
+
+	Image {
+		id: footer__helper_choose
+		width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
+		height: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
+		fillMode: Image.PreserveAspectCrop
+		source: "../assets/icons/helper_choose.svg"
+		layer.enabled: true
+		layer.effect: ColorOverlay { color: "#4f4f4f" }
+		antialiasing: true
+		smooth: true
+
+	anchors {
+		left: footer__helper_system_label.right; leftMargin: aspectRatio === 43 ? vpx(10*screenRatio) : vpx(10*screenRatio)
+		verticalCenter: parent.verticalCenter
+	}
+
+}
+
+	Text {
+		id: footer__helper_choose_label
+		text: "choose"
+		color: "#7b7d7f"
+		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
+		font.capitalization: Font.AllUppercase
+		font.family: "Open Sans"
+		verticalAlignment: Text.AlignVCenter
+
+	anchors {
+		left: footer__helper_choose.right; leftMargin: aspectRatio === 43 ? vpx(6*screenRatio) : vpx(6*screenRatio)
+		verticalCenter: parent.verticalCenter
+	}
+
+}
 
 }
 
