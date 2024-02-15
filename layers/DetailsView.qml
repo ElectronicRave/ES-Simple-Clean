@@ -257,6 +257,40 @@ import QtGraphicalEffects 1.12
 	}
 
 	Image {
+		id: footer__helper_back
+		width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
+		height: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
+		fillMode: Image.PreserveAspectFit
+		source: "../assets/icons/helper_back.svg"
+		layer.enabled: true
+		layer.effect: ColorOverlay { color: "#4f4f4f" }
+		antialiasing: true
+		smooth: true
+
+	anchors {
+		left: parent.left; leftMargin: aspectRatio === 43 ? vpx(5*screenRatio) : vpx(5*screenRatio)
+		verticalCenter: parent.verticalCenter
+	}
+
+}
+
+	Text {
+		id: footer__helper_back_label
+		text: "back"
+		color: "#7b7d7f"
+		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
+		font.capitalization: Font.AllUppercase
+		font.family: "Open Sans"
+		verticalAlignment: Text.AlignVCenter
+
+	anchors {
+		left: footer__helper_back.right; leftMargin: aspectRatio === 43 ? vpx(0*screenRatio) : vpx(0*screenRatio)
+		verticalCenter: parent.verticalCenter
+	}
+
+}
+
+	Image {
 		id: footer__helper_launch
 		width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
 		height: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
@@ -268,7 +302,7 @@ import QtGraphicalEffects 1.12
 		smooth: true
 
 	anchors {
-		left: parent.left; leftMargin: aspectRatio === 43 ? vpx(5*screenRatio) : vpx(5*screenRatio)
+		left: footer__helper_back_label.right; leftMargin: aspectRatio === 43 ? vpx(4*screenRatio) : vpx(4*screenRatio)
 		verticalCenter: parent.verticalCenter
 	}
 
@@ -291,49 +325,6 @@ import QtGraphicalEffects 1.12
 }
 
 	Image {
-		id: footer__helper_back
-		width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
-		height: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
-		fillMode: Image.PreserveAspectFit
-		source: "../assets/icons/helper_back.svg"
-		layer.enabled: true
-		layer.effect: ColorOverlay { color: "#4f4f4f" }
-		antialiasing: true
-		smooth: true
-
-	anchors {
-		left: footer__helper_launch_label.right; leftMargin: aspectRatio === 43 ? vpx(4*screenRatio) : vpx(4*screenRatio)
-		verticalCenter: parent.verticalCenter
-	}
-
-}
-
-	Text {
-		id: footer__helper_back_label
-		text: "back"
-		color: "#7b7d7f"
-		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
-		font.capitalization: Font.AllUppercase
-		font.family: "Open Sans"
-		verticalAlignment: Text.AlignVCenter
-
-	anchors {
-		left: footer__helper_back.right; leftMargin: aspectRatio === 43 ? vpx(0*screenRatio) : vpx(0*screenRatio)
-		verticalCenter: parent.verticalCenter
-	}
-
-	MouseArea {
-		anchors.fill: footer__helper_back && footer__helper_back_label
-		onClicked: {
-		collectionsView.focus = true
-		return;
-	}
-
-}
-
-}
-
-	Image {
 		id: footer__helper_system
 		width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
 		height: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
@@ -345,7 +336,7 @@ import QtGraphicalEffects 1.12
 		smooth: true
 
 	anchors {
-		left: footer__helper_back_label.right; leftMargin: aspectRatio === 43 ? vpx(10*screenRatio) : vpx(10*screenRatio)
+		left: footer__helper_launch_label.right; leftMargin: aspectRatio === 43 ? vpx(10*screenRatio) : vpx(10*screenRatio)
 		verticalCenter: parent.verticalCenter
 	}
 
