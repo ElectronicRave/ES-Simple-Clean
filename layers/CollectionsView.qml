@@ -81,8 +81,7 @@ import QtGraphicalEffects 1.12
 
 	Image {
 		id: footer__helper_select
-		width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
-		height: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
+		sourceSize.width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
 		fillMode: Image.PreserveAspectCrop
 		source: "../assets/icons/helper_launch.svg"
 		layer.enabled: true
@@ -116,8 +115,7 @@ import QtGraphicalEffects 1.12
 
 	Image {
 		id: footer__helper_choose
-		width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
-		height: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
+		sourceSize.width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
 		fillMode: Image.PreserveAspectCrop
 		source: "../assets/icons/helper_system.svg"
 		layer.enabled: true

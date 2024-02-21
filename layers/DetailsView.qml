@@ -52,7 +52,7 @@ import QtGraphicalEffects 1.12
 	}
 
 	Image {
-		height: parent.height - header.paddingV * 2
+		sourceSize.height: parent.height - header.paddingV * 2
 		fillMode: Image.PreserveAspectFit
 		horizontalAlignment: Image.AlignLeft
 		source: currentCollection.shortName ? "../assets/images/logos/%1.svg".arg(currentCollection.shortName) : ""
@@ -259,8 +259,7 @@ import QtGraphicalEffects 1.12
 
 	Image {
 		id: footer__helper_back
-		width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
-		height: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
+		sourceSize.width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
 		fillMode: Image.PreserveAspectCrop
 		source: "../assets/icons/helper_back.svg"
 		layer.enabled: true
@@ -294,8 +293,7 @@ import QtGraphicalEffects 1.12
 
 	Image {
 		id: footer__helper_launch
-		width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
-		height: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
+		sourceSize.width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
 		fillMode: Image.PreserveAspectCrop
 		source: "../assets/icons/helper_launch.svg"
 		layer.enabled: true
@@ -329,8 +327,7 @@ import QtGraphicalEffects 1.12
 
 	Image {
 		id: footer__helper_system
-		width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
-		height: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
+		sourceSize.width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
 		fillMode: Image.PreserveAspectCrop
 		source: "../assets/icons/helper_system.svg"
 		layer.enabled: true
@@ -364,8 +361,7 @@ import QtGraphicalEffects 1.12
 
 	Image {
 		id: footer__helper_choose
-		width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
-		height: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
+		sourceSize.width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
 		fillMode: Image.PreserveAspectCrop
 		source: "../assets/icons/helper_choose.svg"
 		layer.enabled: true
