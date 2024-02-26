@@ -40,9 +40,9 @@ import QtGraphicalEffects 1.12
 
 	Rectangle {
 		id: header
-		property int paddingH: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
-		property int paddingV: aspectRatio === 43 ? vpx(12*screenRatio) : vpx(12*screenRatio)
-		height: aspectRatio === 43 ? vpx(65*screenRatio) : vpx(65*screenRatio)
+		property int paddingH: aspectRatio === 43 ? vpx(26*screenRatio) : vpx(16*screenRatio)
+		property int paddingV: aspectRatio === 43 ? vpx(22*screenRatio) : vpx(12*screenRatio)
+		height: aspectRatio === 43 ? vpx(75*screenRatio) : vpx(65*screenRatio)
 		color: "#c5c6c7"
 
 	anchors {
@@ -52,7 +52,7 @@ import QtGraphicalEffects 1.12
 	}
 
 	Image {
-		sourceSize.height: parent.height - header.paddingV * 2
+		sourceSize.height: aspectRatio === 43 ? parent.height - header.paddingV * 1 : parent.height - header.paddingV * 2
 		fillMode: Image.PreserveAspectFit
 		horizontalAlignment: Image.AlignLeft
 		source: currentCollection.shortName ? "../assets/images/logos/%1.svg".arg(currentCollection.shortName) : ""
@@ -67,13 +67,13 @@ import QtGraphicalEffects 1.12
 }
 
 	Text {
-		width: parent.width * 0.35
+		width: aspectRatio === 43 ? parent.width * 0.40 : parent.width * 0.35
 		text: currentCollection.name
 		wrapMode: Text.WordWrap
 		color: "#7b7d7f"
 		font.capitalization: Font.AllUppercase
 		font.family: "Open Sans"
-		font.pixelSize: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
+		font.pixelSize: aspectRatio === 43 ? vpx(22*screenRatio) : vpx(20*screenRatio)
 		font.weight: Font.Light
 		horizontalAlignment: Text.AlignRight
 
@@ -88,20 +88,20 @@ import QtGraphicalEffects 1.12
 
 	Rectangle {
 		id: content
-		property int paddingH: aspectRatio === 43 ? vpx(52*screenRatio) : vpx(52*screenRatio)
-		property int paddingV: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
+		property int paddingH: aspectRatio === 43 ? vpx(43*screenRatio) : vpx(53*screenRatio)
+		property int paddingV: aspectRatio === 43 ? vpx(42*screenRatio) : vpx(32*screenRatio)
 		color: "#97999a"
 
 	anchors {
 		top: header.bottom
 		left: parent.left
 		right: parent.right
-		bottom: footer.top
+		bottom: footer__helper.top
 	}
 
 	Item {
 		id: boxart
-		height: aspectRatio === 43 ? vpx(220*screenRatio) : vpx(220*screenRatio)
+		height: aspectRatio === 43 ? vpx(290*screenRatio) : vpx(220*screenRatio)
 		width: Math.max(aspectRatio === 43 ? vpx(230*screenRatio) : vpx(230*screenRatio), Math.min(height * boxartImage.aspectRatio, aspectRatio === 43 ? vpx(260*screenRatio) : vpx(260*screenRatio)))
 		z: 1
 
@@ -129,7 +129,7 @@ import QtGraphicalEffects 1.12
 
 	ListView {
 		id: gameView
-		width: parent.width * 0.35
+		width: aspectRatio === 43 ? parent.width * 0.40 : parent.width * 0.35
 		model: currentCollection.games
 		focus: true
 
@@ -157,10 +157,10 @@ import QtGraphicalEffects 1.12
 		width: parent.width
 		leftPadding: aspectRatio === 43 ? vpx(6*screenRatio) : vpx(6*screenRatio)
 		rightPadding: leftPadding
-		lineHeight: 1.2
+		lineHeight: aspectRatio === 43 ? 1.3 : 1.2
 		text: modelData.title
 		color: selected ? clrLight : clrDark
-		font.pixelSize: aspectRatio === 43 ? vpx(13*screenRatio) : vpx(13*screenRatio)
+		font.pixelSize: aspectRatio === 43 ? vpx(15*screenRatio) : vpx(13*screenRatio)
 		font.capitalization: Font.AllUppercase
 		font.family: "Open Sans"
 		verticalAlignment: Text.AlignVCenter
@@ -182,10 +182,10 @@ import QtGraphicalEffects 1.12
 		width: parent.width
 		leftPadding: aspectRatio === 43 ? vpx(6*screenRatio) : vpx(6*screenRatio)
 		rightPadding: leftPadding
-		lineHeight: 1.2
+		lineHeight: aspectRatio === 43 ? 1.3 : 1.2
 		text: gameTitle__item.display
 		color: selected ? clrLight : clrDark
-		font.pixelSize: aspectRatio === 43 ? vpx(13*screenRatio) : vpx(13*screenRatio)
+		font.pixelSize: aspectRatio === 43 ? vpx(15*screenRatio) : vpx(13*screenRatio)
 		font.capitalization: Font.AllUppercase
 		font.family: "Open Sans"
 		verticalAlignment: Text.AlignVCenter
@@ -222,8 +222,9 @@ import QtGraphicalEffects 1.12
 
 	highlightRangeMode: ListView.ApplyRange
 	highlightMoveDuration: 0
-	preferredHighlightBegin: height * 0.5 - vpx(15)
-	preferredHighlightEnd: height * 0.5 + vpx(15)
+	preferredHighlightBegin: height * 0.5 - vpx(2)
+	preferredHighlightEnd: height * 0.5 + vpx(2)
+	clip: true
 
 }
 
@@ -232,24 +233,9 @@ import QtGraphicalEffects 1.12
 	//Footer bar
 
 	Rectangle {
-		id: footer
-		height: aspectRatio === 43 ? vpx(22*screenRatio) * 1.5 : vpx(22*screenRatio) * 1.5
-		color: header.color
-
-	anchors {
-		left: parent.left
-		right: parent.right
-		bottom: parent.bottom
-	}
-
-}
-
-	//Footer bar helper
-
-	Rectangle {
 		id: footer__helper
-		height: aspectRatio === 43 ? vpx(22*screenRatio) * 1.5 : vpx(22*screenRatio) * 1.5
-		color: "transparent"
+		height: aspectRatio === 43 ? vpx(24*screenRatio) * 1.5 : vpx(22*screenRatio) * 1.5
+		color: header.color
 
 	anchors {
 		left: parent.left
@@ -259,7 +245,7 @@ import QtGraphicalEffects 1.12
 
 	Image {
 		id: footer__helper_back
-		sourceSize.width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
+		sourceSize.width: aspectRatio === 43 ? vpx(34*screenRatio) : vpx(32*screenRatio)
 		fillMode: Image.PreserveAspectCrop
 		source: "../assets/icons/helper_back.svg"
 		layer.enabled: true
@@ -279,7 +265,7 @@ import QtGraphicalEffects 1.12
 		id: footer__helper_back_label
 		text: "back"
 		color: "#7b7d7f"
-		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
+		font.pixelSize: aspectRatio === 43 ? vpx(18*screenRatio) : vpx(16*screenRatio)
 		font.capitalization: Font.AllUppercase
 		font.family: "Open Sans"
 		verticalAlignment: Text.AlignVCenter
@@ -293,7 +279,7 @@ import QtGraphicalEffects 1.12
 
 	Image {
 		id: footer__helper_launch
-		sourceSize.width: aspectRatio === 43 ? vpx(32*screenRatio) : vpx(32*screenRatio)
+		sourceSize.width: aspectRatio === 43 ? vpx(34*screenRatio) : vpx(32*screenRatio)
 		fillMode: Image.PreserveAspectCrop
 		source: "../assets/icons/helper_launch.svg"
 		layer.enabled: true
@@ -303,7 +289,7 @@ import QtGraphicalEffects 1.12
 		opacity: 0.8
 
 	anchors {
-		left: footer__helper_back_label.right; leftMargin: aspectRatio === 43 ? vpx(4*screenRatio) : vpx(4*screenRatio)
+		left: footer__helper_back_label.right; leftMargin: aspectRatio === 43 ? vpx(6*screenRatio) : vpx(4*screenRatio)
 		verticalCenter: parent.verticalCenter
 	}
 
@@ -313,7 +299,7 @@ import QtGraphicalEffects 1.12
 		id: footer__helper_launch_label
 		text: "launch"
 		color: "#7b7d7f"
-		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
+		font.pixelSize: aspectRatio === 43 ? vpx(18*screenRatio) : vpx(16*screenRatio)
 		font.capitalization: Font.AllUppercase
 		font.family: "Open Sans"
 		verticalAlignment: Text.AlignVCenter
@@ -327,7 +313,7 @@ import QtGraphicalEffects 1.12
 
 	Image {
 		id: footer__helper_system
-		sourceSize.width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
+		sourceSize.width: aspectRatio === 43 ? vpx(22*screenRatio) : vpx(20*screenRatio)
 		fillMode: Image.PreserveAspectCrop
 		source: "../assets/icons/helper_system.svg"
 		layer.enabled: true
@@ -337,7 +323,7 @@ import QtGraphicalEffects 1.12
 		opacity: 0.8
 
 	anchors {
-		left: footer__helper_launch_label.right; leftMargin: aspectRatio === 43 ? vpx(10*screenRatio) : vpx(10*screenRatio)
+		left: footer__helper_launch_label.right; leftMargin: aspectRatio === 43 ? vpx(12*screenRatio) : vpx(10*screenRatio)
 		verticalCenter: parent.verticalCenter
 	}
 
@@ -347,13 +333,13 @@ import QtGraphicalEffects 1.12
 		id: footer__helper_system_label
 		text: "system"
 		color: "#7b7d7f"
-		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
+		font.pixelSize: aspectRatio === 43 ? vpx(18*screenRatio) : vpx(16*screenRatio)
 		font.capitalization: Font.AllUppercase
 		font.family: "Open Sans"
 		verticalAlignment: Text.AlignVCenter
 
 	anchors {
-		left: footer__helper_system.right; leftMargin: aspectRatio === 43 ? vpx(6*screenRatio) : vpx(6*screenRatio)
+		left: footer__helper_system.right; leftMargin: aspectRatio === 43 ? vpx(8*screenRatio) : vpx(6*screenRatio)
 		verticalCenter: parent.verticalCenter
 	}
 
@@ -361,7 +347,7 @@ import QtGraphicalEffects 1.12
 
 	Image {
 		id: footer__helper_choose
-		sourceSize.width: aspectRatio === 43 ? vpx(20*screenRatio) : vpx(20*screenRatio)
+		sourceSize.width: aspectRatio === 43 ? vpx(22*screenRatio) : vpx(20*screenRatio)
 		fillMode: Image.PreserveAspectCrop
 		source: "../assets/icons/helper_choose.svg"
 		layer.enabled: true
@@ -371,7 +357,7 @@ import QtGraphicalEffects 1.12
 		opacity: 0.8
 
 	anchors {
-		left: footer__helper_system_label.right; leftMargin: aspectRatio === 43 ? vpx(10*screenRatio) : vpx(10*screenRatio)
+		left: footer__helper_system_label.right; leftMargin: aspectRatio === 43 ? vpx(12*screenRatio) : vpx(10*screenRatio)
 		verticalCenter: parent.verticalCenter
 	}
 
@@ -381,13 +367,13 @@ import QtGraphicalEffects 1.12
 		id: footer__helper_choose_label
 		text: "choose"
 		color: "#7b7d7f"
-		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(16*screenRatio)
+		font.pixelSize: aspectRatio === 43 ? vpx(18*screenRatio) : vpx(16*screenRatio)
 		font.capitalization: Font.AllUppercase
 		font.family: "Open Sans"
 		verticalAlignment: Text.AlignVCenter
 
 	anchors {
-		left: footer__helper_choose.right; leftMargin: aspectRatio === 43 ? vpx(6*screenRatio) : vpx(6*screenRatio)
+		left: footer__helper_choose.right; leftMargin: aspectRatio === 43 ? vpx(8*screenRatio) : vpx(6*screenRatio)
 		verticalCenter: parent.verticalCenter
 	}
 
