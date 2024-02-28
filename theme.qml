@@ -8,8 +8,8 @@ import "layers" as Layers
 	// When the theme loads, try to restore the last selected game and collection.
 
 	Component.onCompleted: {
-		collectionsView.currentCollectionIndex = api.memory.get('collectionIndex') || 0;
-		detailsView.currentGameIndex = api.memory.get('gameIndex') || 0;
+		home.currentCollectionIndex = api.memory.get('collectionIndex') || 0;
+		software.currentGameIndex = api.memory.get('gameIndex') || 0;
 }
 
 	//Calculates screen ratio
@@ -56,8 +56,8 @@ import "layers" as Layers
 
 	// The actual views are defined in their own QML files. They activate each other by setting the focus.
 
-	Layers.CollectionsView {
-		id: collectionsView
+	Layers.Home {
+		id: home
 		focus: true
 
 		anchors {
@@ -66,11 +66,11 @@ import "layers" as Layers
 
 }
 
-	Layers.DetailsView {
-		id: detailsView
+	Layers.Software {
+		id: software
 
 		anchors {
-			top: collectionsView.bottom
+			top: home.bottom
 		}
 
 }
@@ -79,9 +79,9 @@ import "layers" as Layers
 
 	states: [
 		State {
-			when: detailsView.focus
+			when: software.focus
 		AnchorChanges {
-			target: collectionsView;
+			target: home;
 			anchors.bottom: parent.top
 		}
 
