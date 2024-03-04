@@ -40,6 +40,6 @@ In this list you can see all content in the System, in this screen you can do se
 
 - A     - Launch content
 - B     - Goes back to the Home Page
-- LEFT  - Previous system
+- LEFT  - Previnious system
 - RIGHT - Next system
 - TOUCH - Access to all features
