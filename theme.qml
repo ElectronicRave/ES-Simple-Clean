@@ -18,7 +18,7 @@ import "layers" as Layers
 
 	//calculates screen proportion
 
-	property var screenProportion: root.width / root.height;
+    property real screenProportion: root.width / root.height;
 
 	//calculates screen aspect
 
@@ -37,13 +37,10 @@ import "layers" as Layers
 		switch (aspectRatio) {
 		case 43:
 		return vpx(pixel*12.8)
-		break;
 		case 169:
 		return vpx(pixel*12.8)
-		break;
 		default:
 		return vpx(pixel*12.8)
-		break;
 	}
 
 }
