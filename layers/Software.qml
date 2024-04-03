@@ -108,6 +108,7 @@ import QtGraphicalEffects 1.12
 	anchors {
 		top: parent.top; topMargin: content.paddingV
 		right: parent.right; rightMargin: content.paddingH
+		bottom: parent.bottom; bottomMargin: content.paddingV
 	}
 
 	Image {
@@ -117,7 +118,6 @@ import QtGraphicalEffects 1.12
 		sourceSize { width: 256; height: 256 }
 		fillMode: Image.PreserveAspectFit
 		asynchronous: true
-		horizontalAlignment: Image.AlignHCenter
 
 	anchors {
 		fill: parent
@@ -149,11 +149,11 @@ import QtGraphicalEffects 1.12
 		property color clrDark: "#393a3b"
 		property color clrLight: "#97999b"
 		width: ListView.view.width
-		height: gameTitle.height
+		height: game__title.height
 		color: selected ? clrDark : clrLight
 
 	Text {
-		id: gameTitle
+		id: game__title
 		width: parent.width
 		leftPadding: aspectRatio === 43 ? vpx(6*screenRatio) : vpx(6*screenRatio)
 		rightPadding: leftPadding
@@ -170,41 +170,64 @@ import QtGraphicalEffects 1.12
 }
 
 	Item {
-		id: gameTitle__item
-		property string text: modelData.title
-		property string spacing: "          "
-		property string combined: text + spacing
-		property string display: combined.substring(step) + combined.substring(0, step)
-		property int step: 0
+		id: game__title_animation_item
+		property alias text: game__title_animation.text
+		property int spacing: 80
+  		width: game__title_animation.width + spacing
+   		height: game__title_animation.height
+  		clip: true
 
 	Text {
-		id: gameTitle__animation
-		width: parent.width
-		leftPadding: aspectRatio === 43 ? vpx(6*screenRatio) : vpx(6*screenRatio)
-		rightPadding: leftPadding
-		lineHeight: aspectRatio === 43 ? 1.3 : 1.2
-		text: gameTitle__item.display
-		color: selected ? clrLight : clrDark
-		font.pixelSize: aspectRatio === 43 ? vpx(15*screenRatio) : vpx(13*screenRatio)
-		font.capitalization: Font.AllUppercase
-		font.family: "Open Sans"
-		verticalAlignment: Text.AlignVCenter
+		id: game__title_animation
+		leftPadding: game__title.leftPadding
+		rightPadding: game__title.rightPadding
+		lineHeight: game__title.lineHeight
+		text: game__title.text
+		color: game__title.color
+		font.pixelSize: game__title.font.pixelSize
+		font.capitalization: game__title.font.capitalization
+		font.family: game__title.font.family
+		verticalAlignment: game__title.verticalAlignment
 		visible: selected ? 1 : 0
-}
 
-	Timer {
-		id: gameTitle_animation_timer
-		interval: 300
-		running: selected ? gameTitle.truncated : 0
-		repeat: true
-		onTriggered: parent.step = (parent.step + 1) % parent.combined.length
+	SequentialAnimation on x {
+		running: selected ? game__title.truncated : 0
+		loops: Animation.Infinite
+
+	NumberAnimation {
+		from: 0;
+		to: - game__title_animation_item.width
+		duration: 16 * Math.abs (to - from) //Speed at which text moves
+	}
+
+	PauseAnimation {
+		duration: 1000 //Wait 1 second to continue
 	}
 
 }
 
+	Text {
+		id: game__title_animation_sequence
+		x: game__title_animation_item.width
+		leftPadding: game__title_animation.leftPadding
+		rightPadding: game__title_animation.rightPadding
+		lineHeight: game__title_animation.lineHeight
+		text: game__title_animation.text
+		color: game__title_animation.color
+		font.pixelSize: game__title_animation.font.pixelSize
+		font.capitalization: game__title_animation.font.capitalization
+		font.family: game__title_animation.font.family
+		verticalAlignment: game__title_animation.verticalAlignment
+		visible: game__title_animation.visible
+      }
+
+}
+
+}
+
 	MouseArea {
-		id: gameTitle_mouse
-		anchors.fill: gameTitle
+		id: game__title_mouse
+		anchors.fill: game__title
 		onClicked: {
 			if (selected) {
 			api.memory.set('collectionIndex', home.currentCollectionIndex);
