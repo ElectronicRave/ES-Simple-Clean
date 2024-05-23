@@ -172,7 +172,7 @@ import QtGraphicalEffects 1.12
 	Item {
 		id: game__title_animation_item
 		property alias text: game__title_animation.text
-		property int spacing: 80
+		property int spacing: aspectRatio === 43 ? vpx(60*screenRatio) : vpx(40*screenRatio)
   		width: game__title_animation.width + spacing
    		height: game__title_animation.height
   		clip: true
