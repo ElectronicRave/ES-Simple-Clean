@@ -197,7 +197,7 @@ import QtGraphicalEffects 1.12
 	NumberAnimation {
 		from: 0;
 		to: - game__title_animation_item.width
-		duration: 16 * Math.abs (to - from) //Speed at which text moves
+		duration: 13 * Math.abs (to - from) //Speed at which text moves
 	}
 
 	PauseAnimation {
