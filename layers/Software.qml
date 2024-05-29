@@ -139,8 +139,8 @@ import QtGraphicalEffects 1.12
 		bottom: parent.bottom; bottomMargin: content.paddingV
 	}
 
-		Keys.onLeftPressed: { home.currentCollectionIndex = home.currentCollectionIndex + 1 } 
-		Keys.onRightPressed: { home.currentCollectionIndex = home.currentCollectionIndex - 1 }
+		Keys.onLeftPressed: { home.currentCollectionIndex = home.currentCollectionIndex - 1 } 
+		Keys.onRightPressed: { home.currentCollectionIndex = home.currentCollectionIndex + 1 }
 
 	delegate:
 
