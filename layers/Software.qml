@@ -160,7 +160,7 @@ import QtGraphicalEffects 1.12
 		lineHeight: aspectRatio === 43 ? 1.3 : 1.2
 		text: modelData.title
 		color: selected ? clrLight : clrDark
-		font.pixelSize: aspectRatio === 43 ? vpx(15*screenRatio) : vpx(13*screenRatio)
+		font.pixelSize: aspectRatio === 43 ? vpx(16*screenRatio) : vpx(14*screenRatio)
 		font.capitalization: Font.AllUppercase
 		font.family: "Open Sans"
 		verticalAlignment: Text.AlignVCenter
@@ -244,9 +244,9 @@ import QtGraphicalEffects 1.12
 }
 
 	highlightRangeMode: ListView.ApplyRange
+	preferredHighlightBegin: height * 0.5
+	preferredHighlightEnd: preferredHighlightBegin
 	highlightMoveDuration: 0
-	preferredHighlightBegin: height * 0.5 - vpx(2)
-	preferredHighlightEnd: height * 0.5 + vpx(2)
 	clip: true
 
 }
